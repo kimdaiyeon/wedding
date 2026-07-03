@@ -55,7 +55,7 @@
   table.cal th.sun{color:#c98181}
   table.cal td{font-size:13.5px;padding:8px 0;color:#565a50}
   table.cal td.sun{color:#c98181}
-  table.cal td.dday{position:relative;color:#fff;font-weight:600}
+  table.cal td.dday{position:relative;z-index:0;color:#fff;font-weight:600}
   table.cal td.dday::before{content:'';position:absolute;inset:2px 50% 2px 50%;
     width:32px;height:32px;transform:translateX(-50%);top:50%;margin-top:-16px;
     background:var(--sage);border-radius:50%;z-index:-1}
@@ -215,19 +215,31 @@
     <details class="acc">
       <summary>신랑 측 계좌번호</summary>
       <div class="acc-row">
-        <div class="info">신한 000-000-000000<small>김OO (신랑)</small></div>
-        <button class="copy-btn" data-copy="신한 000-000-000000">복사</button>
+        <div class="info">○○은행 000-000-000000<small>김대연 (신랑)</small></div>
+        <button class="copy-btn" data-copy="○○은행 000-000-000000">복사</button>
       </div>
       <div class="acc-row">
-        <div class="info">국민 000-00-0000-000<small>김OO (아버지)</small></div>
-        <button class="copy-btn" data-copy="국민 000-00-0000-000">복사</button>
+        <div class="info">○○은행 000-000-000000<small>김성진 (아버지)</small></div>
+        <button class="copy-btn" data-copy="○○은행 000-000-000000">복사</button>
+      </div>
+      <div class="acc-row">
+        <div class="info">○○은행 000-000-000000<small>조영란 (어머니)</small></div>
+        <button class="copy-btn" data-copy="○○은행 000-000-000000">복사</button>
       </div>
     </details>
     <details class="acc">
       <summary>신부 측 계좌번호</summary>
       <div class="acc-row">
-        <div class="info">우리 0000-000-000000<small>이OO (신부)</small></div>
-        <button class="copy-btn" data-copy="우리 0000-000-000000">복사</button>
+        <div class="info">○○은행 000-000-000000<small>박가인 (신부)</small></div>
+        <button class="copy-btn" data-copy="○○은행 000-000-000000">복사</button>
+      </div>
+      <div class="acc-row">
+        <div class="info">○○은행 000-000-000000<small>박용학 (아버지)</small></div>
+        <button class="copy-btn" data-copy="○○은행 000-000-000000">복사</button>
+      </div>
+      <div class="acc-row">
+        <div class="info">○○은행 000-000-000000<small>이세련 (어머니)</small></div>
+        <button class="copy-btn" data-copy="○○은행 000-000-000000">복사</button>
       </div>
     </details>
   </section>
