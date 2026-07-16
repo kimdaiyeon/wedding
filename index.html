@@ -426,7 +426,7 @@ async function loadGuestbook(){
     const r=await fetch(CONFIG.appsScriptUrl+'?type=guestbook');
     const list=await r.json();
     $('#gbList').innerHTML=list.slice(0,20).map(m=>
-      `<div class="msg"><div class="who">${esc(m.name)}<time>${esc(m.date)}</time></div>${esc(m.msg)}</div>`).join('');
+      `<div class="msg"><div class="who">${esc(m.name)}</div>${esc(m.msg)}</div>`).join('');
   }catch{}
 }
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
