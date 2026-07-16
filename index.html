@@ -75,10 +75,13 @@
   .venue .addr{font-size:13.5px;color:#7a7d71;margin-top:6px}
   #map{width:100%;height:240px;border-radius:14px;background:#e3e0d5;
     display:flex;align-items:center;justify-content:center;color:#9a9d92;font-size:13px}
-  .map-btn{display:flex;align-items:center;justify-content:center;gap:6px;
-    margin-top:12px;padding:13px 0;border-radius:12px;text-decoration:none;
-    background:#FEE500;color:#3c1e1e;font-family:inherit;font-size:14px;font-weight:600}
+  .map-btns{display:flex;gap:8px;margin-top:12px}
+  .map-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
+    padding:13px 0;border-radius:12px;text-decoration:none;
+    font-family:inherit;font-size:13.5px;font-weight:600}
   .map-btn:active{opacity:.85}
+  .map-btn.kakao{background:#FEE500;color:#3c1e1e}
+  .map-btn.naver{background:#03C75A;color:#fff}
   .transport{margin-top:22px;font-size:13.5px;color:#565a50}
   .transport dt{font-weight:600;color:var(--sage-deep);margin-top:14px}
   .transport dd{margin-top:2px}
@@ -209,7 +212,10 @@
       <div class="addr">서울 구로구 새말로 97 테크노마트 8층</div>
     </div>
     <div id="map">카카오맵 API 키 등록 후 지도가 표시됩니다</div>
-    <a class="map-btn" id="mapLink" target="_blank" rel="noopener">📍 카카오맵에서 길찾기</a>
+    <div class="map-btns">
+      <a class="map-btn kakao" id="mapLinkKakao" target="_blank" rel="noopener">카카오맵 길찾기</a>
+      <a class="map-btn naver" id="mapLinkNaver" target="_blank" rel="noopener">네이버 길찾기</a>
+    </div>
     <dl class="transport">
       <dt>지하철</dt><dd>1·2호선 신도림역 3번 출구 (테크노마트 판매동 지하와 연결됩니다)</dd>
       <dt>주차</dt><dd>신도림 테크노마트 지하주차장 B3~B7 이용, 주차요원의 안내를 받으세요 (3시간 지원)</dd>
@@ -376,7 +382,8 @@ $('#kakaoShare').addEventListener('click',()=>{
 });
 
 /* 카카오맵 길찾기 버튼 (지도 로드 여부와 무관하게 항상 동작) */
-$('#mapLink').href=`https://map.kakao.com/link/to/${encodeURIComponent('웨딩시티 아모르홀')},${CONFIG.venueLat},${CONFIG.venueLng}`;
+$('#mapLinkKakao').href=`https://map.kakao.com/link/to/${encodeURIComponent('웨딩시티 아모르홀')},${CONFIG.venueLat},${CONFIG.venueLng}`;
+$('#mapLinkNaver').href=`https://map.naver.com/p/search/${encodeURIComponent('신도림 테크노마트 웨딩시티 아모르홀')}`;
 
 /* 카카오맵 (키 등록 시 자동 로드) */
 if(CONFIG.kakaoJsKey){
