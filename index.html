@@ -69,6 +69,16 @@
   .carousel img{flex:0 0 auto;height:360px;width:auto;object-fit:cover;
     scroll-snap-align:center;border-radius:14px;cursor:pointer;transition:opacity .2s}
   .carousel img:active{opacity:.8}
+  .gallery-wrap{position:relative}
+  .nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;
+    width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;
+    background:rgba(255,255,255,.86);color:var(--sage-deep);font-size:22px;line-height:1;
+    box-shadow:0 2px 10px rgba(0,0,0,.18);display:flex;align-items:center;justify-content:center;
+    -webkit-tap-highlight-color:transparent}
+  .nav:hover{background:#fff}
+  .nav:active{transform:translateY(-50%) scale(.92)}
+  .nav.prev{left:6px}
+  .nav.next{right:6px}
   .dots{display:flex;justify-content:center;gap:6px;margin-top:16px}
   .dots span{width:6px;height:6px;border-radius:50%;background:var(--line);
     transition:width .25s,background .25s;cursor:pointer}
@@ -197,15 +207,19 @@
   <section class="fade">
     <span class="label">Gallery</span>
     <h2>우리의 순간들</h2>
-    <div class="carousel" id="gallery">
-      <img src="photos/KakaoTalk_20260716_210556190.jpg" alt="" loading="lazy">
-      <img src="photos/KakaoTalk_20260716_210556190_01.jpg" alt="" loading="lazy">
-      <img src="photos/KakaoTalk_20260716_210556190_02.jpg" alt="" loading="lazy">
-      <img src="photos/KakaoTalk_20260716_210556190_03.jpg" alt="" loading="lazy">
-      <img src="photos/KakaoTalk_20260716_210556190_04.jpg" alt="" loading="lazy">
-      <img src="photos/KakaoTalk_20260716_210556190_05.jpg" alt="" loading="lazy">
-      <img src="photos/KakaoTalk_20260716_210556190_07.jpg" alt="" loading="lazy">
-      <img src="photos/KakaoTalk_20260716_210556190_06.jpg" alt="" loading="lazy">
+    <div class="gallery-wrap">
+      <button class="nav prev" id="galPrev" type="button" aria-label="이전 사진">‹</button>
+      <div class="carousel" id="gallery">
+        <img src="photos/KakaoTalk_20260716_210556190.jpg" alt="" loading="lazy">
+        <img src="photos/KakaoTalk_20260716_210556190_01.jpg" alt="" loading="lazy">
+        <img src="photos/KakaoTalk_20260716_210556190_02.jpg" alt="" loading="lazy">
+        <img src="photos/KakaoTalk_20260716_210556190_03.jpg" alt="" loading="lazy">
+        <img src="photos/KakaoTalk_20260716_210556190_04.jpg" alt="" loading="lazy">
+        <img src="photos/KakaoTalk_20260716_210556190_05.jpg" alt="" loading="lazy">
+        <img src="photos/KakaoTalk_20260716_210556190_07.jpg" alt="" loading="lazy">
+        <img src="photos/KakaoTalk_20260716_210556190_06.jpg" alt="" loading="lazy">
+      </div>
+      <button class="nav next" id="galNext" type="button" aria-label="다음 사진">›</button>
     </div>
     <div class="dots" id="dots"></div>
     <p class="swipe-hint">← 옆으로 넘겨보세요 →</p>
@@ -383,16 +397,25 @@ $('#lightbox').addEventListener('click',()=>$('#lightbox').style.display='none')
     dots.appendChild(d);
   });
   const spans=[...dots.children];
+  const currentIndex=()=>{
+    const c=car.scrollLeft+car.clientWidth/2;
+    let best=0,bd=Infinity;
+    imgs.forEach((im,i)=>{const mid=im.offsetLeft+im.offsetWidth/2, dd=Math.abs(mid-c); if(dd<bd){bd=dd;best=i;}});
+    return best;
+  };
   let t;
   car.addEventListener('scroll',()=>{
     clearTimeout(t);
     t=setTimeout(()=>{
-      const c=car.scrollLeft+car.clientWidth/2;
-      let best=0,bd=Infinity;
-      imgs.forEach((im,i)=>{const mid=im.offsetLeft+im.offsetWidth/2, dd=Math.abs(mid-c); if(dd<bd){bd=dd;best=i;}});
+      const best=currentIndex();
       spans.forEach((s,i)=>s.classList.toggle('on',i===best));
     },60);
   });
+  /* 좌우 화살표 (PC·모바일 공통) */
+  const go=d=>{const i=Math.max(0,Math.min(imgs.length-1,currentIndex()+d));
+    imgs[i].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});};
+  $('#galPrev').addEventListener('click',()=>go(-1));
+  $('#galNext').addEventListener('click',()=>go(1));
 })();
 
 /* 복사 버튼 */
