@@ -214,7 +214,7 @@
     <div id="map">카카오맵 API 키 등록 후 지도가 표시됩니다</div>
     <div class="map-btns">
       <a class="map-btn kakao" id="mapLinkKakao" target="_blank" rel="noopener">카카오맵 길찾기</a>
-      <a class="map-btn naver" id="mapLinkNaver" target="_blank" rel="noopener">네이버 길찾기</a>
+      <a class="map-btn naver" id="mapLinkNaver" href="https://naver.me/5Rh0OxaM" target="_blank" rel="noopener">네이버 길찾기</a>
     </div>
     <dl class="transport">
       <dt>지하철</dt><dd>1·2호선 신도림역 3번 출구 (테크노마트 판매동 지하와 연결됩니다)</dd>
@@ -383,7 +383,6 @@ $('#kakaoShare').addEventListener('click',()=>{
 
 /* 카카오맵 길찾기 버튼 (지도 로드 여부와 무관하게 항상 동작) */
 $('#mapLinkKakao').href=`https://map.kakao.com/link/to/${encodeURIComponent('웨딩시티 아모르홀')},${CONFIG.venueLat},${CONFIG.venueLng}`;
-$('#mapLinkNaver').href=`https://map.naver.com/p/search/${encodeURIComponent('테크노마트 웨딩시티 예식장')}`;
 
 /* 카카오맵 (키 등록 시 자동 로드) */
 if(CONFIG.kakaoJsKey){
