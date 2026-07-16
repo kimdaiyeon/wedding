@@ -389,10 +389,13 @@ if(CONFIG.kakaoJsKey){
   const s=document.createElement('script');
   s.src=`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${CONFIG.kakaoJsKey}&autoload=false`;
   s.onload=()=>kakao.maps.load(()=>{
+    const el=$('#map');
+    el.textContent=''; el.style.display='block';   // flex 해제 → 지도 타일이 컨테이너를 꽉 채우도록
     const pos=new kakao.maps.LatLng(CONFIG.venueLat,CONFIG.venueLng);
-    const map=new kakao.maps.Map($('#map'),{center:pos,level:4});
+    const map=new kakao.maps.Map(el,{center:pos,level:4});
     new kakao.maps.Marker({map,position:pos});
-    $('#map').textContent='';
+    // 초기 렌더 시 타일 누락 방지: 크기 재계산 후 재중심
+    setTimeout(()=>{ map.relayout(); map.setCenter(pos); },300);
   });
   document.head.appendChild(s);
 }
