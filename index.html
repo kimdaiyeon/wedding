@@ -82,9 +82,15 @@
   .map-btn:active{opacity:.85}
   .map-btn.kakao{background:#FEE500;color:#3c1e1e}
   .map-btn.naver{background:#03C75A;color:#fff}
-  .transport{margin-top:22px;font-size:13.5px;color:#565a50}
-  .transport dt{font-weight:600;color:var(--sage-deep);margin-top:14px}
-  .transport dd{margin-top:2px}
+  .transport{margin-top:24px;display:flex;flex-direction:column}
+  .tp-row{display:flex;gap:14px;align-items:flex-start;padding:15px 2px;border-top:1px solid #ece8dd}
+  .tp-row:first-child{border-top:none}
+  .tp-ic{flex:0 0 34px;width:34px;height:34px;border-radius:50%;background:#eef0e6;
+    display:flex;align-items:center;justify-content:center;font-size:16px}
+  .tp-txt{font-size:13.5px;color:#565a50;line-height:1.6}
+  .tp-txt b{display:block;color:var(--sage-deep);font-size:14px;margin-bottom:4px;
+    font-weight:600;letter-spacing:.02em}
+  .tp-txt span{color:#9a9d92;font-size:12.5px}
 
   /* accounts */
   details.acc{background:var(--card);border:1px solid var(--line);border-radius:14px;
@@ -199,14 +205,14 @@
     <span class="label">Gallery</span>
     <h2>우리의 순간들</h2>
     <div class="grid" id="gallery">
-      <img src="photos/1.jpg" alt="" loading="lazy">
-      <img src="photos/2.jpg" alt="" loading="lazy">
-      <img src="photos/3.jpg" alt="" loading="lazy">
       <img src="photos/4.jpg" alt="" loading="lazy">
       <img src="photos/5.jpg" alt="" loading="lazy">
+      <img src="photos/2.jpg" alt="" loading="lazy">
+      <img src="photos/3.jpg" alt="" loading="lazy">
       <img src="photos/6.jpg" alt="" loading="lazy">
-      <img src="photos/KakaoTalk_20260716_210556190_05.jpg" alt="" loading="lazy">
       <img src="photos/KakaoTalk_20260716_210556190_07.jpg" alt="" loading="lazy">
+      <img src="photos/1.jpg" alt="" loading="lazy">
+      <img src="photos/KakaoTalk_20260716_210556190_05.jpg" alt="" loading="lazy">
       <img class="wide" src="photos/KakaoTalk_20260716_210556190_06.jpg" alt="" loading="lazy">
     </div>
   </section>
@@ -224,10 +230,24 @@
       <a class="map-btn kakao" id="mapLinkKakao" target="_blank" rel="noopener">카카오맵 길찾기</a>
       <a class="map-btn naver" id="mapLinkNaver" href="https://naver.me/5Rh0OxaM" target="_blank" rel="noopener">네이버 길찾기</a>
     </div>
-    <dl class="transport">
-      <dt>지하철</dt><dd>1·2호선 신도림역 3번 출구 (테크노마트 판매동 지하와 연결됩니다)</dd>
-      <dt>주차</dt><dd>신도림 테크노마트 지하주차장 B3~B7 이용, 주차요원의 안내를 받으세요 (3시간 지원)</dd>
-    </dl>
+    <div class="transport">
+      <div class="tp-row">
+        <div class="tp-ic">🚇</div>
+        <div class="tp-txt"><b>지하철</b>1·2호선 신도림역 3번 출구<br><span>테크노마트 지하 1층과 연결</span></div>
+      </div>
+      <div class="tp-row">
+        <div class="tp-ic">🚌</div>
+        <div class="tp-txt"><b>버스</b>간선 160 · 503 · 600 · 660 · 662<br>지선 5615 · 5714 · 6512 · 6515</div>
+      </div>
+      <div class="tp-row">
+        <div class="tp-ic">🚗</div>
+        <div class="tp-txt"><b>자가용</b>'신도림 테크노마트' 또는<br>'서울 구로구 새말로 97' 입력</div>
+      </div>
+      <div class="tp-row">
+        <div class="tp-ic">🅿️</div>
+        <div class="tp-txt"><b>주차</b>테크노마트 지하주차장 B3~B7 이용<br>기둥 번호 11번 근처 주차 후 엘리베이터 이용<br><span>3시간 무료 · 8층 키오스크에서 정산 후 출차</span></div>
+      </div>
+    </div>
   </section>
 
   <!-- 마음 전하실 곳 -->
